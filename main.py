@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, json, request, send_from_directory, redirect, url_for
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, RadioField, SubmitField
 from wtforms.validators import InputRequired
 from getrsimod import getRSI
@@ -12,7 +12,7 @@ app.config.from_object('config.ProdConfig')
 Path(app.config['DOWNLOAD']).mkdir(parents=True, exist_ok=True)
 
 
-class DeviceInfo(Form):
+class DeviceInfo(FlaskForm):
     mgmtip = StringField('Hostname', validators=[InputRequired()])
     user = StringField('Username', validators=[InputRequired()])
     passwd = PasswordField('Password', validators=[InputRequired()])
